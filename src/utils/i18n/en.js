@@ -445,7 +445,7 @@ export default {
     label2: "Todayʼs P&L (USDC)",
     label3: "Spot Total Assets (USDC)",
     label4: "Total Assets (USDC)",
-    label5: "Frozen Margin USDC",
+    label5: "Frozen Margin (USDC)",
     spotWallet: {
       wallet0: "Currency",
       wallet1: "Available",

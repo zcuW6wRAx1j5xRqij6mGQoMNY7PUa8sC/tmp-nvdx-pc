@@ -3,6 +3,8 @@ import { recommendListApi } from '@/api/data'
 import { ref, onMounted } from 'vue'
 import { serChartData } from '@/utils/serChartData'
 import { setBaseUrl } from '@/utils/utils'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const cardList = ref([])
 const getRecommendList =  () => {
     recommendListApi({ page: 1, page_size: 20 }).then(data => {
@@ -13,11 +15,19 @@ const getRecommendList =  () => {
 onMounted(() => {
     getRecommendList()
 })
+const handleClick = (item) => {
+    router.push({
+        path: '/SpotTrading',
+        query: {
+            id: item.id,
+        },
+    })
+}
 </script>
 <template>
     <div class="my-10 text-xl font-bold">{{ $t('spe.title1') }}</div>
     <div class="b-show mb-6">
-        <div v-for="item in cardList" :key="item.id">
+        <div v-for="item in cardList" :key="item.id" @click="handleClick(item)">
             <div class="b-box mb-4">
                 <img
                                 :src="setBaseUrl(item.logo)"
