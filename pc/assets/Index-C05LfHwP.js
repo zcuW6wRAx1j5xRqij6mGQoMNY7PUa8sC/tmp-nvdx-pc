@@ -1,0 +1,1 @@
+import{u as t,b as s,d as a,e as o,h as n}from"./index-sRNqgdFD.js";import{_}from"./_plugin-vue_export-helper-DlAUqK2U.js";const c={class:"about-us-page"},r=["innerHTML"],d={__name:"Index",setup(u){const{t:e}=t();return(p,i)=>(s(),a("div",c,[o("div",{innerHTML:n(e)("about.text1")},null,8,r)]))}},f=_(d,[["__scopeId","data-v-94ad243e"]]);export{f as default};

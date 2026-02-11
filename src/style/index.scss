@@ -1,0 +1,459 @@
+@use './transition' as *;
+@use './utils' as *;
+@use './element-plus' as *;
+
+/* =========================
+   Theme Tokens
+========================= */
+html[data-theme='dark'] {
+  --bg-page: #161D26;
+  --bg-card: #1C242E;
+  --bg-popup: #1C242E;
+  --bg-hover: #222C38;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #8B939A;
+  --text-placeholder: #5F6770;
+
+  --border-color: #242D39;
+
+  --color-primary: #0CAF60;
+  --color-success: #0CAF60;
+  --color-danger: #FD4C42;
+  --color-warning: #FB774A;
+
+  --shadow-popup: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+  /* extra */
+  --scrollbar-track: #141517;
+  --scrollbar-thumb: #000;
+  --text-grey: #999999;
+  --text-tip: #E7E7E7;
+  --tag-bg: #333A43;
+  --tag-green-text: #00b481;
+  --tag-green-bg: rgba(0, 180, 129, 0.16);
+  --tag-red-text: #e34646;
+  --tag-red-bg: rgba(227, 70, 70, 0.16);
+  --tag-blue-bg: #1652F0;
+  --link-blue: #0F7DFF;
+  --btn-warn: #ffac4b;
+
+  --status-red: #FF5353;
+  --status-green: #0CAF60;
+  --status-yellow: #FB774A;
+  --status-grey: #353C45;
+
+  --tstatus-bg: #1F2F2F;
+  --tstatus-red-bg: #332229;
+  --tstatus-red-text: #FF5449;
+  --tstatus-orange-text: #FB774A;
+  --tstatus-orange-bg: rgba(247, 147, 26, 0.15);
+}
+
+html[data-theme='light'] {
+  --bg-page: #F6F8FB;
+  --bg-card: #FFFFFF;
+  --bg-popup: #FFFFFF;
+  --bg-hover: #F1F3F6;
+
+  --text-primary: #1D2129;
+  --text-secondary: #4E5969;
+  --text-placeholder: #86909C;
+
+  --border-color: #E5E6EB;
+
+  --color-primary: #0CAF60;
+  --color-success: #0CAF60;
+  --color-danger: #E5484D;
+  --color-warning: #F59E0B;
+
+  --shadow-popup: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* extra (light tuned) */
+  --scrollbar-track: #EEF1F5;
+  --scrollbar-thumb: #C9CED6;
+  --text-grey: #86909C;
+  --text-tip: #4E5969;
+  --tag-bg: #EEF2F6;
+  --tag-green-text: #0CAF60;
+  --tag-green-bg: rgba(12, 175, 96, 0.12);
+  --tag-red-text: #E5484D;
+  --tag-red-bg: rgba(229, 72, 77, 0.12);
+  --tag-blue-bg: #1652F0;
+  --link-blue: #0F7DFF;
+  --btn-warn: #F59E0B;
+
+  --status-red: #E5484D;
+  --status-green: #0CAF60;
+  --status-yellow: #F59E0B;
+  --status-grey: #A8B0BA;
+
+  --tstatus-bg: rgba(12, 175, 96, 0.10);
+  --tstatus-red-bg: rgba(229, 72, 77, 0.10);
+  --tstatus-red-text: #E5484D;
+  --tstatus-orange-text: #F59E0B;
+  --tstatus-orange-bg: rgba(245, 158, 11, 0.14);
+}
+
+/* 兼容你原来的变量名（不要删，老代码还在用） */
+html {
+  --body-bg: var(--bg-page);
+  --el-green-color: var(--color-success);
+  --el-red-color: var(--color-danger);
+  --el-card-bg: var(--bg-card);
+  --el-primary-color: var(--color-primary);
+}
+
+/* =========================
+   Global
+========================= */
+#app {
+  width: 100%;
+  height: 100%;
+  min-width: 1020px;
+  overflow: auto;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: 'PingFang SC', '微软雅黑', Arial, sans-serif, 'Helvetica Neue', Helvetica,
+    'Hiragino Sans GB', 'Microsoft YaHei';
+}
+
+
+/* =======================
+   Message 基础样式
+======================= */
+.el-message {
+  background: var(--bg-popup) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-popup) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 内容 */
+.el-message .el-message__content {
+  color: var(--text-primary) !important;
+}
+
+/* icon */
+.el-message .el-message__icon {
+  font-size: 18px;
+}
+
+/* =======================
+   Error
+======================= */
+.el-message.el-message--error {
+  border-color: var(--color-danger) !important;
+}
+
+.el-message.el-message--error .el-message__content,
+.el-message.el-message--error .el-message__icon {
+  color: var(--color-danger) !important;
+}
+
+/* =======================
+   Success
+======================= */
+.el-message.el-message--success {
+  border-color: var(--color-success) !important;
+}
+
+.el-message.el-message--success .el-message__content,
+.el-message.el-message--success .el-message__icon {
+  color: var(--color-success) !important;
+}
+
+/* =======================
+   Warning
+======================= */
+.el-message.el-message--warning {
+  border-color: var(--color-warning) !important;
+}
+
+.el-message.el-message--warning .el-message__content,
+.el-message.el-message--warning .el-message__icon {
+  color: var(--color-warning) !important;
+}
+
+/* =======================
+   Info
+======================= */
+.el-message.el-message--info {
+  border-color: var(--link-blue) !important;
+}
+
+.el-message.el-message--info .el-message__content,
+.el-message.el-message--info .el-message__icon {
+  color: var(--link-blue) !important;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  background-clip: padding-box;
+  border-radius: 2em;
+}
+
+/* =========================
+   Components / Utilities
+========================= */
+.c-order-tip-box {
+  padding: 4px 6px;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--text-tip);
+  line-height: 14px;
+  border-radius: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+  background: var(--tag-bg);
+
+  &.green {
+    color: var(--tag-green-text);
+    background: var(--tag-green-bg);
+  }
+  &.red {
+    color: var(--tag-red-text);
+    background: var(--tag-red-bg);
+  }
+  &.blue {
+    color: #fff;
+    background: var(--tag-blue-bg);
+  }
+}
+
+.primary-color {
+  color: var(--link-blue) !important;
+}
+
+.c-is-num {
+  font-family: DIN;
+}
+
+.c-content {
+  flex: auto;
+  overflow: auto;
+  background-color: var(--bg-page);
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.red-color {
+  color: var(--el-red-color) !important;
+  font-family: DIN;
+}
+
+.green-color {
+  color: var(--el-green-color) !important;
+  font-family: DIN;
+}
+
+.grey-color {
+  color: var(--text-grey) !important;
+}
+
+#tv-attr-logo {
+  display: none;
+}
+
+.b-box {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+
+  .b-img {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+}
+
+.b-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.b-img-large {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+}
+
+.ope-btn {
+  text-align: center;
+  font-size: 14px;
+  color: var(--btn-warn);
+  cursor: pointer;
+}
+
+.ope-btn-blue {
+  text-align: center;
+  color: var(--link-blue);
+  cursor: pointer;
+}
+
+.el-popover.el-popper {
+  width: auto !important;
+}
+
+.dropList {
+  width: 440px;
+  height: 600px;
+  overflow: auto;
+  font-family: DIN;
+  font-size: 14px;
+  background: var(--body-bg);
+  padding: 4px 18px;
+  z-index: 9999;
+  border-radius: 4px;
+  scrollbar-width: none;
+
+  .table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-secondary);
+    font-family: 'PingFang SC';
+  }
+
+  .table-body {
+    .body-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+  }
+}
+
+.from-title {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 22px;
+  margin-bottom: 16px;
+}
+
+.c-num-status {
+  padding: 4px 8px;
+  min-width: 66px;
+  min-height: 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(18, 190, 115, 0.40);
+  color: var(--el-green-color);
+  line-height: 14px;
+  text-align: center;
+  font-family: DIN;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    border: 4px solid transparent;
+    border-bottom-color: var(--el-green-color);
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+
+  &.is-red {
+    border: 1px solid rgba(253, 76, 66, 0.42);
+    color: var(--el-red-color);
+
+    &:before {
+      border-top-color: var(--el-red-color);
+      border-bottom-color: transparent;
+      margin-bottom: 0;
+      margin-top: 6px;
+    }
+  }
+
+  &.is-small {
+    padding: 4px 6px;
+    min-width: 40px;
+    min-height: 28px;
+    font-size: 10px;
+  }
+}
+
+.status-box {
+  padding: 5px 8px;
+  min-width: 56px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  font-family: 'PingFang SC';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 8px;
+  background-color: var(--status-green);
+
+  &.is-num {
+    color: #fff;
+    font-family: DIN;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  &.status-red {
+    background-color: var(--status-red);
+  }
+
+  &.status-green {
+    background-color: var(--status-green);
+  }
+
+  &.status-yellow {
+    background-color: var(--status-yellow);
+  }
+
+  &.status-grey {
+    background-color: var(--status-grey);
+  }
+}
+
+.mb-10px {
+  margin-bottom: 10px;
+}
+
+.t-status-box {
+  min-width: 54px;
+  min-height: 35px;
+  padding: 7px 13px;
+  background: var(--tstatus-bg);
+  border-radius: 12px;
+  color: var(--color-success);
+  justify-self: flex-start;
+
+  &.red {
+    background-color: var(--tstatus-red-bg);
+    color: var(--tstatus-red-text);
+  }
+
+  &.orange {
+    color: var(--tstatus-orange-text);
+    background-color: var(--tstatus-orange-bg);
+  }
+
+  &.green {
+    color: var(--color-success);
+  }
+}

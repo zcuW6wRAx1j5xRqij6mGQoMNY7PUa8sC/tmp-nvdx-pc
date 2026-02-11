@@ -1,0 +1,1 @@
+import{h as t}from"./index-B4oU7Ve4.js";const r="/assets/login-right-PK2TfZsZ.png",o=s=>t.request("post","/api/app/signin",{data:s}),a=s=>t.request("post","/api/app/signup",{data:s}),e=s=>t.request("post","/api/app/account/forget_password",{data:s});export{r as _,e as f,o as l,a as r};

@@ -1,0 +1,108 @@
+.login-body {
+  margin-top: 48px;
+  width: 1063px;
+  height: 782px;
+  background: var(--bg-hover);
+  border-radius: 36px;
+  padding: 24px;
+  display: flex;
+}
+
+.top-header {
+  position: absolute;
+  flex-shrink: 0;
+  top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 60px;
+}
+
+.from-box {
+  padding-top: 115px;
+  width: 450px;
+  padding: 70px;
+  border-radius: 33px;
+  background-color: var(--bg-card);
+  height: 100%;
+}
+
+.login-page {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+.login-left {
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.login-title {
+  color: var(--text-primary);
+  font-family: 'PingFang SC';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  margin-bottom: 36px;
+}
+.lang-icon {
+		color: var(--text-primary);
+		/* 黑夜白、日间黑 */
+	}
+.remember-pwd {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  color: var(--text-primary);
+  font-family: 'PingFang SC';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.tip-forget-pwd {
+  color: var(--text-primary);
+  font-family: 'PingFang SC';
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tip-font {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.cf-turnstile {
+  width: 400px;
+}
+
+// :deep(.show-language) {
+//   background: var(--bg-card);
+//   color: var(--text-primary);
+//   border: 1px solid var(--border-color);
+// }
+
+.login-bg {
+  width: 437px;
+  height: 386px;
+  margin-top: 85px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.text-logo {
+  margin-left: 10px;
+}
