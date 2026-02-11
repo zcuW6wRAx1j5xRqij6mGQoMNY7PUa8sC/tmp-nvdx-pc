@@ -80,8 +80,3 @@ const handleClose = () => {
 }
 </script>
 
-<style scoped lang="scss">
-   
-
-   
-</style>

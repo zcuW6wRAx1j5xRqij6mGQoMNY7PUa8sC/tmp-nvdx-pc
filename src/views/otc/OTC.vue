@@ -260,7 +260,7 @@ const hisShowInfo = computed(() => {
             <div class=" h-full flex flex-col overflow-auto" ref="popup" @click.stop v-loading="loading">
                 <template v-if="step === 1">
                     <div class="flex items-center">
-                        <div class="form-label">{{ activeTab === 1 ? t('otc.form.label1') : t('otc.form.label4') }}
+                        <div class="form-label">{{ activeTab === 1 ? `${t('otc.form.label1')} (${opeItem.min_limit} - ${opeItem.max_limit})` : `${t('otc.form.label4')} (${opeItem.sell_min_limit} - ${opeItem.sell_max_limit})` }}
                         </div>
                         <div class="form-label ml-auto">USDC{{ t('otc.tip2') }}<span class="text-[#fff] c-is-num ml-1">{{ balance }}</span></div>
                     </div>
