@@ -1,0 +1,9 @@
+{
+  "appId": "com.nvdx.app",
+  "appName": "Coinalgo",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "bundledWebRuntime": true
+}

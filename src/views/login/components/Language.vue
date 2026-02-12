@@ -53,12 +53,6 @@ const handleCommand = (val) => {
         languageList.value.find((item) => item.value === val)?.text ||
         t("changeLang.label6")
 }
-import { setTheme } from '@/utils/theme'
-
-const toggleTheme = () => {
-    const current = document.documentElement.getAttribute('data-theme')
-    setTheme(current === 'dark' ? 'light' : 'dark')
-}
 </script>
 <template>
 	
@@ -78,9 +72,6 @@ const toggleTheme = () => {
             </el-dropdown-menu>
         </template>
     </el-dropdown>
-	<div style="margin-left: 10px;">
-		<button @click="toggleTheme">Switch themes</button>
-	</div>
 </template>
 <style scoped lang="scss">
 	

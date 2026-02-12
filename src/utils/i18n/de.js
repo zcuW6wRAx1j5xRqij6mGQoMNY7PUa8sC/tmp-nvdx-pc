@@ -255,6 +255,7 @@ export default {
             wallet4: 'Unrealisierte Gewinne/Verluste',
         },
         signOut: 'Abmelden',
+        outContent: 'Möchten Sie sich wirklich abmelden?',
         idCard: 'Personalausweis',
         passport: 'Reisepass',
         driverLicense: 'Führerschein',
@@ -441,7 +442,11 @@ export default {
         menu7: 'Nutzervereinbarung',
         menu8: 'Datenschutzrichtlinie',
     },
-
+    setting: {
+        title: 'Einstellungen',
+        sbutitle: 'Einstellungen',
+        theme: 'Design wechseln',
+    },
     walletAsset: {
         label1: 'Gesamtvermögen (USDC)',
         label2: 'Heutiger Gewinn/Verlust (USDC)',

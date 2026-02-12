@@ -237,6 +237,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   padding-right: 24px;
+  margin-bottom: 16px;
 }
 
 .action-btn {

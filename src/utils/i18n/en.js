@@ -259,6 +259,7 @@ export default {
       wallet4: "Floating PnL",
     },
     signOut: "Sign Out",
+    outContent: "Are you sure you want to sign out?",
     idCard: "ID Card",
     passport: "Passport",
     driverLicense: "Driver's License",
@@ -439,6 +440,11 @@ export default {
     menu6: "About",
     menu7: "Terms of Service",
     menu8: "Privacy Policy",
+  },
+  setting: {
+    title: "Settings",
+    sbutitle: "Settings",
+    theme: "Switch themes",
   },
   walletAsset: {
     label1: "Total Assets (USDC)",

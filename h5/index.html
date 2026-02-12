@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" translate="no">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate">
+    <link rel="icon" type="image/svg+xml" href="/logo.webp" />
+    <meta name="viewport" id="viewport"
+        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, viewport-fit=cover, shrink-to-fit=no, target-densitydpi=device-dpi" />
+    <!-- Android Chrome 特殊处理 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Coinalgo</title>
+    <!-- Android字体大小强制控制脚本 -->
+    <script>
+
+        (function () {
+            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                handleFontSize();
+            } else {
+                if (document.addEventListener) {
+                    document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent("onWeixinJSBridgeReady", handleFontSize);
+                }
+            }
+            function handleFontSize() {
+                // 设置网页字体为默认大小
+                WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+                // 重写设置网页字体大小的事件
+                WeixinJSBridge.on('menu:setfont', function () {
+                    WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+                });
+            }
+        })();
+
+    </script>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    <script src="https://unpkg.com/centrifuge@5.0.1/dist/centrifuge.js"></script>
+    <!-- <script type='text/javascript'>
+            (function(a, b, c, d, e, j, s) {
+                a[d] = a[d] || function() {
+                    (a[d].a = a[d].a || []).push(arguments)
+                };
+                j = b.createElement(c),
+                    s = b.getElementsByTagName(c)[0];
+                j.async = true;
+                j.charset = 'UTF-8';
+                j.src = 'https://static.meiqia.com/widget/loader.js';
+                s.parentNode.insertBefore(j, s);
+            })(window, document, 'script', '_MEIQIA');
+            _MEIQIA('entId', 'a47672d82935924acdf6dcc763f6588e');
+            _MEIQIA('language','de');
+            _MEIQIA('languageLocal','true')
+            // _MEIQIA('manualInit');
+        </script> -->
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

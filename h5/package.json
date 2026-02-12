@@ -1,0 +1,73 @@
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.2",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env --max_old_space_size=4096 vite --mode test",
+    "build": "rimraf dist && cross-env vite build && npx cap sync web",
+    "build:test": "rimraf dist && cross-env vite build --mode test",
+    "build:dev": "rimraf dist && cross-env vite build --mode test",
+    "preview": "vite preview",
+    "app:build": "pnpm run build&& npx @capgo/cli bundle zip -p ./dist/ -n latest.zip -j"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "0.34.1"
+    }
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/app": "^7.1.0",
+    "@capacitor/browser": "^7.0.2",
+    "@capacitor/clipboard": "^7.0.2",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/device": "^7.0.2",
+    "@capacitor/ios": "^7.4.3",
+    "@capgo/capacitor-updater": "^7.13.2",
+    "@vueuse/core": "^10.11.1",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.12.1",
+    "dayjs": "^1.11.18",
+    "decimal.js": "^10.6.0",
+    "echarts": "^5.6.0",
+    "klinecharts": "10.0.0-alpha1",
+    "lightweight-charts": "^4.2.3",
+    "numbro": "^2.5.0",
+    "pinia": "2.1.7",
+    "qs": "^6.14.0",
+    "vant": "^4.9.21",
+    "vue": "^3.5.21",
+    "vue-i18n": "^9.14.5",
+    "vue-qrcode": "^2.2.2",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.4.3",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "amfe-flexible": "^2.2.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^9.33.0",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.5.6",
+    "postcss-html": "^1.8.0",
+    "postcss-import": "^16.1.1",
+    "postcss-px-to-viewport": "^1.1.1",
+    "postcss-px-to-viewport-8-plugin": "^1.2.5",
+    "postcss-px2rem-exclude": "^0.0.6",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.6.2",
+    "rimraf": "^5.0.10",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "sass": "^1.92.1",
+    "tailwindcss": "^3.4.17",
+    "unplugin-auto-import": "^0.17.8",
+    "unplugin-vue-components": "^0.26.0",
+    "unplugin-vue-define-options": "^1.5.5",
+    "vite": "^4.5.14",
+    "vite-plugin-remove-console": "^2.2.0"
+  }
+}

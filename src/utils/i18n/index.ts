@@ -18,11 +18,11 @@ const messages = {
 let locale = localStorage.getItem('language')
 // 如果 localStorage 中没有语言设置，那就使用默认的语言
 if (!locale) {
-    locale = 'en'
+    locale = 'zh_CN'
 }
 const i18n = createI18n({
     locale: locale, // 设置默认语言
-    fallbackLocale: 'en', // 设置备用语言
+    fallbackLocale: 'zh_CN', // 设置备用语言
     legacy: false,
     messages,
 })

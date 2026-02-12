@@ -255,6 +255,7 @@ export default {
             wallet4: 'Profits et pertes flottants',
         },
         signOut: 'Se déconnecter',
+        outContent: 'Voulez-vous vraiment vous déconnecter ?',
         idCard: "Carte d'identité",
         passport: 'Passeport',
         driverLicense: 'Permis de conduire',
@@ -435,6 +436,11 @@ export default {
         menu6: 'À propos de nous',
         menu7: 'Contrat utilisateur',
         menu8: 'Politique de confidentialité',
+    },
+    setting: {
+        title: 'Paramètres',
+        sbutitle: 'Paramètres',
+        theme: 'Changer de thème',
     },
     walletAsset: {
         label1: 'Actifs totaux du compte (USDC)',

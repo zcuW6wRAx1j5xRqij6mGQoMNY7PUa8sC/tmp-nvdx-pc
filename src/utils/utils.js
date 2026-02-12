@@ -256,3 +256,12 @@ export const removeDot = (num) => {
     }
     return num
 }
+/**
+ * 若字符串包含 usdc 则替换为 usd（不区分大小写）
+ * @param {string} str - 要处理的字符串
+ * @returns {string} 替换后的字符串
+ */
+export const usdcToUsd = str => {
+    if (str == null || typeof str !== 'string') return str === undefined ? '' : String(str)
+    return str.replace(/usdc/gi, match => (match === 'USDC' ? 'USD' : match === 'Usdc' ? 'Usd' : 'usd'))
+};

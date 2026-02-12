@@ -255,6 +255,7 @@ export default {
             wallet4: 'Guadagni/perdite fluttuanti',
         },
         signOut: 'Esci',
+        outContent: 'Sei sicuro di voler uscire?',
         idCard: "Carta d'identità",
         passport: 'Passaporto',
         driverLicense: 'Patente di guida',
@@ -435,6 +436,11 @@ export default {
         menu6: 'Chi siamo',
         menu7: 'Contratto utente',
         menu8: 'Politica sulla privacy',
+    },
+    setting: {
+        title: 'Impostazioni',
+        sbutitle: 'Impostazioni',
+        theme: 'Cambia tema',
     },
     walletAsset: {
         label1: 'Totale asset conto (USDC)',

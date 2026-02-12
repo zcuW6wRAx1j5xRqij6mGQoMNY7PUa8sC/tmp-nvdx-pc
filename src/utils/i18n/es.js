@@ -257,6 +257,7 @@ export default {
             wallet4: 'Ganancia/Pérdida flotante',
         },
         signOut: 'Cerrar sesión',
+        outContent: '¿Está seguro de que desea cerrar sesión?',
         idCard: 'Cédula de identidad',
         passport: 'Pasaporte',
         driverLicense: 'Licencia de conducir',
@@ -438,6 +439,11 @@ export default {
         menu6: 'Acerca de nosotros',
         menu7: 'Acuerdo del usuario',
         menu8: 'Política de privacidad',
+    },
+    setting: {
+        title: 'Configuración',
+        sbutitle: 'Configuración',
+        theme: 'Cambiar tema',
     },
     walletAsset: {
         label1: 'Total de activos en cuenta (USDC)',

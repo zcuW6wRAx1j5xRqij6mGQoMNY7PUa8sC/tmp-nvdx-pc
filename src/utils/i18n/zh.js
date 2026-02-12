@@ -255,6 +255,7 @@ export default {
             wallet4: '浮动盈亏',
         },
         signOut: '退出登录',
+        outContent: '确定要退出登录吗？',
         idCard: '身份证',
         passport: '护照',
         driverLicense: '驾照',
@@ -438,6 +439,11 @@ export default {
         menu6: '关于我们',
         menu7: '用户协议',
         menu8: '隐私条款',
+    },
+    setting: {
+        title: '设置',
+        sbutitle: '设置',
+        theme: '切换主题',
     },
     walletAsset: {
         label1: '账户总资产(USDC)',

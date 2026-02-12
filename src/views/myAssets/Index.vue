@@ -71,12 +71,14 @@ const checkIn = () => {
             loadingInstance.close()
         })
 }
-// 如果进入的时候有type，则跳转到对应的tab
+// 如果进入或通过 TopHeader 设置跳转带 type，则显示对应 tab
 const route = useRoute()
-const type = route.query.type
-if (type) {
-    activeTab.value = type
+if (route.query.type) {
+    activeTab.value = route.query.type
 }
+watch(() => route.query.type, (type) => {
+    if (type) activeTab.value = type
+})
 function getImageUrl (imageName) {
     return new URL(`./img/${imageName}.svg`, import.meta.url).href
 }
@@ -144,10 +146,9 @@ function getImageUrl (imageName) {
         </div>
         <div class="assets-content">
             <div class="menu-ul">
-                <div v-for="item in menuList" :key="item.name" class="menu-item"
+                <div v-for="item in menuList" :key="item.path" class="menu-item"
                     :class="{ active: item.path === activeTab }" @click="changeTab(item)">
-                    <img :src="getImageUrl(item.img)" alt="" class="menu-img" v-if="item.path !== activeTab" />
-                    <img :src="getImageUrl(item.activeImg)" alt="" class="menu-img" v-else />
+                    <img :src="getImageUrl(item.path !== activeTab ? item.img : item.activeImg)" alt="" class="menu-img" />
                     {{ item.name }}
                 </div>
             </div>
