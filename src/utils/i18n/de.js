@@ -550,6 +550,11 @@ export default {
         tip: 'Bitte schließen Sie die Identitätsverifizierung ab, bevor Sie mit anderen Aktionen fortfahren!',
         tip1: 'Nur unterstützt',
         tip2: 'Vermögen',
+        amountLabel: 'Einzahlungsbetrag',
+        amountPlaceholder: 'Bitte geben Sie den Einzahlungsbetrag ein',
+        voucherLabel: 'Nachweis',
+        voucherPlaceholder: 'Nachweis eingeben oder hochladen',
+        submit: 'Absenden',
     },
 
     transform: {

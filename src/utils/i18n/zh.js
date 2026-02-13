@@ -547,6 +547,11 @@ export default {
         tip: '请先完成实名认证后再进行其他操作!',
         tip1: '仅支持',
         tip2: '资产',
+        amountLabel: '充值金额',
+        amountPlaceholder: '请输入充值金额',
+        voucherLabel: '凭证',
+        voucherPlaceholder: '请输入或上传凭证',
+        submit: '提交',
     },
     transform: {
         title: '划转',

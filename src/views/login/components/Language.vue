@@ -13,6 +13,10 @@ const languageList = computed(() => {
     return [
         ...list,
         {
+            text: '繁體中文',
+            value: "zh_TW",
+        },
+        {
             text: "Deutsch",
             value: "de",
         },

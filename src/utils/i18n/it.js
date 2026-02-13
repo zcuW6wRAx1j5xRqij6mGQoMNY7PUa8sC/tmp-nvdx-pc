@@ -546,6 +546,11 @@ export default {
         tip: "Completa prima la verifica dell'identità per procedere con altre operazioni!",
         tip1: 'Supporta solo',
         tip2: 'Asset',
+        amountLabel: 'Importo del deposito',
+        amountPlaceholder: "Inserisci l'importo del deposito",
+        voucherLabel: 'Ricevuta',
+        voucherPlaceholder: 'Inserisci o carica la ricevuta',
+        submit: 'Invia',
     },
     transform: {
         title: 'Trasferimento',

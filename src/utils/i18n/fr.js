@@ -545,6 +545,11 @@ export default {
         tip: "Veuillez terminer la vérification d'identité avant toute autre opération!",
         tip1: 'Seulement pris en charge',
         tip2: 'Actifs',
+        amountLabel: 'Montant du dépôt',
+        amountPlaceholder: 'Veuillez entrer le montant du dépôt',
+        voucherLabel: 'Justificatif',
+        voucherPlaceholder: 'Saisir ou télécharger le justificatif',
+        submit: 'Soumettre',
     },
     transform: {
         title: 'Transfert',

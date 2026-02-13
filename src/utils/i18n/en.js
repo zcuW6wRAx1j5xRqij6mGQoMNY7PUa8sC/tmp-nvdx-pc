@@ -549,6 +549,11 @@ export default {
     tip: "Please complete real-name verification before performing any actions!",
     tip1: "Only supports",
     tip2: "Assets",
+    amountLabel: "Deposit Amount",
+    amountPlaceholder: "Enter deposit amount",
+    voucherLabel: "Voucher",
+    voucherPlaceholder: "Enter or upload voucher",
+    submit: "Submit",
   },
   transform: {
     title: "Transfer",

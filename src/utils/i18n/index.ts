@@ -1,6 +1,7 @@
 // index.ts
 import { createI18n } from 'vue-i18n'
 import zh from './zh.js'
+import zhTW from './zh_TW.js'
 import en from './en.js'
 import es from './es.js'
 import fr from './fr.js'
@@ -8,6 +9,7 @@ import it from './it.js'
 import de from './de.js'
 const messages = {
     'zh_CN': zh,
+    'zh_TW': zhTW, // 繁體中文
     'en': en,
     'es': es, // 西班牙
     'fr': fr, // 法语
@@ -18,7 +20,7 @@ const messages = {
 let locale = localStorage.getItem('language')
 // 如果 localStorage 中没有语言设置，那就使用默认的语言
 if (!locale) {
-    locale = 'zh_CN'
+    locale = 'en'
 }
 const i18n = createI18n({
     locale: locale, // 设置默认语言

@@ -263,5 +263,5 @@ export const removeDot = (num) => {
  */
 export const usdcToUsd = str => {
     if (str == null || typeof str !== 'string') return str === undefined ? '' : String(str)
-    return str.replace(/usdc/gi, match => (match === 'USDC' ? 'USD' : match === 'Usdc' ? 'Usd' : 'usd'))
+    return str.replace(/usdc/gi, match => (match === 'USDC' ? 'USD' : match === 'usdc' ? 'usd' : 'usd'))
 };

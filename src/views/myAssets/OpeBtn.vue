@@ -1,12 +1,15 @@
 <script setup>
 import { useI18n } from "vue-i18n"
-import { ref, onMounted, reactive } from "vue"
-import { friendlyNumber } from "@/utils/utils"
+import { ref, onMounted, reactive, computed } from "vue"
+import { friendlyNumber, setBaseUrl } from "@/utils/utils"
 import { successMessage } from "@utils/message"
+import useUpload from "@/hooks/useUpload"
+import { Plus } from "@element-plus/icons-vue"
 import { useDisabled } from "@/hooks/useDisabled"
 import {
     withdrawalApi,
     getRechargeCoinListApi,
+    rechargeApi,
     transferApi,
     getTransferBalanceApi,
 } from "@/api/my"
@@ -19,6 +22,7 @@ const { userInfo } = useUserInfo()
 const { getWalletData, walletInfo, getSpotBalance } =
     useBalance([1, 2])
 const { t } = useI18n()
+const uploadFile = useUpload()
 
 function getImageUrl (imageName) {
     return new URL(`./img/${imageName}.svg`, import.meta.url).href
@@ -85,6 +89,8 @@ const fromRechargeDataInit = {
     coin_label: "",
     child_name: "",
     child_address: "",
+    amount: "",
+    voucher: "",
 }
 const fromRechargeData = reactive({
     ...fromRechargeDataInit,
@@ -93,6 +99,37 @@ const codeUrl = ref("")
 const currencyRechargeList = ref([])
 const childRechargeList = ref([])
 const isRechargeDisabled = useDisabled(fromRechargeData)
+const rechargeErrorObj = ref({})
+const isRechargeSubmitDisabled = computed(() => {
+    return (
+        !fromRechargeData.coin_id ||
+        !fromRechargeData.child_address ||
+        !(Number(fromRechargeData.amount) > 0) ||
+        !fromRechargeData.voucher
+    )
+})
+const handleRechargeVoucherUpload = (file) => {
+    uploadFile(file).then((data) => {
+        fromRechargeData.voucher = data
+    })
+    return false
+}
+const submitRecharge = () => {
+    return rechargeApi({
+        amount: Number(fromRechargeData.amount),
+        coin_id: fromRechargeData.coin_id,
+        voucher: fromRechargeData.voucher,
+    })
+        .then(() => {
+            successMessage(t("common.opeSuccess"))
+            depositVisible.value = false
+            getWalletData([1, 2])
+            getTotal()
+        })
+        .catch((err) => {
+            rechargeErrorObj.value = err
+        })
+}
 const selectRechargeChange = (item) => {
     fromRechargeData.coin_id = item.id
     fromRechargeData.coin_label = item.name
@@ -275,35 +312,59 @@ const sureHandle = () => {
     <!-- 存款 -->
     <my-dialog v-model="depositVisible" :title="t('recharge.title')" width="553px" :showFooter="false"
         @close="depositVisible = false">
-        <div class="from-label">
-            {{ t("withdrawal.label1") }}
-            <span class="money-tip">{{ $t("withdrawal.tip.tip1") }}：{{ coinValue }}
-                {{ fromData.coin_label }}</span>
-        </div>
-        <el-select v-model="fromRechargeData.coin_id" :placeholder="t('withdrawal.pla1')">
-            <el-option v-for="item in currencyRechargeList" :key="item.id" :label="item.name" :value="item.id"
-                @click.stop="selectRechargeChange(item)" />
-        </el-select>
-        <div class="from-label">
-            {{ t("recharge.pla2") }}
-        </div>
-        <el-select v-model="fromRechargeData.child_address" :placeholder="t('recharge.pla2')">
-            <el-option v-for="item in childRechargeList" :key="item.id" :label="item.name" :value="item.id"
-                @click.stop="selectRechargeChildChange(item)" />
-        </el-select>
-        <div class="flex flex-col items-center" v-if="fromRechargeData.child_address">
-            <div class="title-tip">
-                {{ $t("recharge.tip1") }}{{ fromData.child_name
-                }}{{ $t("recharge.tip2") }}
+        <div class="my-dialog-body">
+            <div class="from-label">
+                {{ t("withdrawal.label1") }}
+                <span class="money-tip">{{ $t("withdrawal.tip.tip1") }}：{{ coinValue }}
+                    {{ fromData.coin_label }}</span>
             </div>
-            <img v-if="codeUrl" class="code-img" :src="codeUrl" />
-            <div class="address">{{ $t("recharge.address") }}</div>
-            <div class="address-value">
-                {{ fromRechargeData.child_address }}
+            <el-select v-model="fromRechargeData.coin_id" :placeholder="t('withdrawal.pla1')">
+                <el-option v-for="item in currencyRechargeList" :key="item.id" :label="item.name" :value="item.id"
+                    @click.stop="selectRechargeChange(item)" />
+            </el-select>
+            <div class="from-label">
+                {{ t("recharge.pla2") }}
+            </div>
+            <el-select v-model="fromRechargeData.child_address" :placeholder="t('recharge.pla2')">
+                <el-option v-for="item in childRechargeList" :key="item.id" :label="item.name" :value="item.id"
+                    @click.stop="selectRechargeChildChange(item)" />
+            </el-select>
+            <div class="flex flex-col items-center" v-if="fromRechargeData.child_address">
+                <div class="title-tip">
+                    {{ $t("recharge.tip1") }}{{ fromRechargeData.child_name
+                    }}{{ $t("recharge.tip2") }}
+                </div>
+                <img v-if="codeUrl" class="code-img" :src="codeUrl" />
+                <div class="address">{{ $t("recharge.address") }}</div>
+                <div class="address-value">
+                    {{ fromRechargeData.child_address }}
+                </div>
+            </div>
+            <MyInput v-model="fromRechargeData.amount" type="number"
+                :fromLabel="$t('recharge.amountLabel')" :placeholder="$t('recharge.amountPlaceholder')"
+                :errorObj="rechargeErrorObj" propName="amount" />
+            <div class="from-label">{{ $t("recharge.voucherLabel") }}</div>
+            <div class="upload-box recharge-upload">
+                <el-upload class="avatar-uploader"
+                    action="#"
+                    :show-file-list="false"
+                    :before-upload="handleRechargeVoucherUpload"
+                    accept="image/*"
+                    :limit="1">
+                    <img v-if="fromRechargeData.voucher" :src="setBaseUrl(fromRechargeData.voucher)" class="avatar" />
+                    <el-icon v-else class="avatar-uploader-icon">
+                        <Plus />
+                    </el-icon>
+                </el-upload>
+            </div>
+            <div v-if="rechargeErrorObj.voucher" class="recharge-error">{{ rechargeErrorObj.voucher }}</div>
+            <div class="flex items-center gap-2 mt-2">
+                <MyButton @click="copy(fromRechargeData.child_address)" :disabled="isRechargeDisabled" size="medium"
+                    class="flex-1">{{ t("recharge.copy") }}</MyButton>
+                <MyButton :clickFn="submitRecharge" :disabled="isRechargeSubmitDisabled" size="medium"
+                    class="flex-1">{{ t("common.text1") }}</MyButton>
             </div>
         </div>
-        <MyButton @click="copy(fromRechargeData.child_address)" :disabled="isRechargeDisabled" size="medium"
-            class="mt-6">{{ t("recharge.copy") }}</MyButton>
     </my-dialog>
 
     <!-- 取款 -->
@@ -451,5 +512,49 @@ const sureHandle = () => {
     line-height: 18px;
     margin-left: 12px;
     cursor: pointer;
+}
+
+.upload-box.recharge-upload {
+    min-height: 100px;
+    border-radius: 8px;
+    margin-top: 8px;
+    background-color: var(--bg-hover, #f5f5f5);
+    padding: 12px;
+    border: 1px dashed var(--border-color, #dcdfe6);
+}
+.avatar-uploader :deep(.el-upload) {
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: var(--bg-hover, #fafafa);
+    width: 100%;
+    height: 100px;
+    border: 1px dashed var(--border-color, #dcdfe6);
+}
+.avatar-uploader .avatar {
+    max-width: 100%;
+    max-height: 100px;
+    display: block;
+    border-radius: 6px;
+    object-fit: contain;
+}
+.recharge-error {
+    font-size: 12px;
+    color: var(--color-danger, #f56c6c);
+    margin-top: 4px;
+}
+</style>
+<style>
+.avatar-uploader .el-upload:hover {
+    border-color: var(--el-color-primary);
+}
+.avatar-uploader-icon {
+    font-size: 28px;
+    color: var(--text-placeholder, #c0c4cc);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

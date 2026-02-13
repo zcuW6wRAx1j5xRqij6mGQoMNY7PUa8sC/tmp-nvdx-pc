@@ -548,6 +548,11 @@ export default {
         tip: '¡Completa la verificación de identidad antes de continuar!',
         tip1: 'Solo soporta',
         tip2: 'Activos',
+        amountLabel: 'Monto de depósito',
+        amountPlaceholder: 'Ingresa el monto del depósito',
+        voucherLabel: 'Comprobante',
+        voucherPlaceholder: 'Ingresa o sube el comprobante',
+        submit: 'Enviar',
     },
     transform: {
         title: 'Transferencia',

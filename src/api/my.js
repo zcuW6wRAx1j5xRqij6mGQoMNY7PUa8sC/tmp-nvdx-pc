@@ -73,6 +73,10 @@ export const withdrawalLogApi = (params) => {
 export const rechargeHistoryApi = (params) => {
   return http.request("get", "/api/app/wallet/deposit/history", { params });
 };
+// 充值提交（填写金额与凭证）
+export const rechargeApi = (data) => {
+  return http.request("post", "/api/app/wallet/deposit", { data });
+};
 // 修改登录密码
 export const modifyLoginPwdApi = (data) => {
   return http.request("post", "/api/app/account/setting/password", { data });
