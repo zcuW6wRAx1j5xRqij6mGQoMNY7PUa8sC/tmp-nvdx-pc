@@ -322,6 +322,7 @@ export default {
         pending: 'Auftragsausführung',
         success: 'Erfolgreich',
         failed: 'Abgebrochen',
+        noOption: 'Für diesen Handelspaar sind derzeit keine Optionen verfügbar',
     },
 
     contractOpe: {
@@ -453,6 +454,8 @@ export default {
         label3: 'Spot-Gesamtvermögen (USDC)',
         label4: 'Futures-Gesamtvermögen (USDC)',
         label5: 'Reservierte Futures-Guthaben (USDC)',
+        label6: 'Options-Gesamtvermögen (USDC)',
+        label7: 'Reservierte Options-Guthaben (USDC)',
         spotWallet: {
             wallet0: 'Krypto',
             wallet1: 'Verfügbar',
@@ -527,6 +530,7 @@ export default {
         select1: 'Spot-Konto',
         select2: 'Verkaufskonto',
         select3: 'Futures-Konto',
+        select4: 'Options-Konto',
         tip1: 'Verfügbares Guthaben',
         errorAccount: 'Quell- und Zielkonto dürfen nicht identisch sein',
     },

@@ -331,6 +331,21 @@ export default {
         label3: 'Gelé',
         btn: 'Transférer',
     },
+    walletAsset: {
+        label1: 'Actifs totaux du compte (USDC)',
+        label2: "Profits et pertes d'aujourd'hui (USDC)",
+        label3: 'Actifs totaux au comptant (USDC)',
+        label4: 'Actifs totaux des contrats (USDC)',
+        label5: 'Actifs bloqués des contrats (USDC)',
+        label6: 'Actifs totaux options (USDC)',
+        label7: 'Actifs options bloqués (USDC)',
+        spotWallet: {
+            wallet0: 'Devise',
+            wallet1: 'Disponible',
+            wallet2: 'Gelé',
+            wallet3: 'Valorisation ($)',
+        },
+    },
     withdrawal: {
         title: 'Retrait',
         label1: 'Choisir la monnaie',

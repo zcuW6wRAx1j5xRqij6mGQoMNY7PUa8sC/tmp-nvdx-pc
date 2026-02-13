@@ -334,6 +334,21 @@ export default {
         label3: 'Reserviert',
         btn: 'Übertragen',
     },
+    walletAsset: {
+        label1: 'Gesamtvermögen (USDC)',
+        label2: 'Heutiger Gewinn/Verlust (USDC)',
+        label3: 'Spot-Gesamtvermögen (USDC)',
+        label4: 'Futures-Gesamtvermögen (USDC)',
+        label5: 'Reservierte Futures-Guthaben (USDC)',
+        label6: 'Options-Gesamtvermögen (USDC)',
+        label7: 'Reservierte Options-Guthaben (USDC)',
+        spotWallet: {
+            wallet0: 'Krypto',
+            wallet1: 'Verfügbar',
+            wallet2: 'Reserviert',
+            wallet3: 'Valuation ($)',
+        },
+    },
     withdrawal: {
         title: 'Auszahlen',
         label1: 'Währung auswählen',

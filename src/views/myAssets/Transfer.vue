@@ -1,12 +1,13 @@
 <script setup>
 import { useDisabled } from "@/hooks/useDisabled"
 import { useI18n } from "vue-i18n"
-import { ref, onMounted, reactive } from "vue"
+import { ref, onMounted, reactive, computed } from "vue"
 import { friendlyNumber } from "@/utils/utils"
 import { successMessage } from "@utils/message"
 import {
     transferApi,
     getTransferBalanceApi,
+    getOptionsWalletApi,
 } from "@/api/my"
 import { useBalance } from "@/hooks/useBalance"
 const { getWalletData, walletInfo, getSpotBalance } =
@@ -23,25 +24,38 @@ const transferData = reactive({
 })
 const isTransferDisabled = useDisabled(transferData)
 const contactTotal = ref(0)
+const optionsWallet = ref({})
 const getTransferBalance = () => {
     getTransferBalanceApi().then((data) => {
         contactTotal.value = data
     })
 }
+const getOptionsWallet = () => {
+    getOptionsWalletApi().then((data) => {
+        optionsWallet.value = data || {}
+    })
+}
 onMounted(() => {
     getTransferBalance()
+    getOptionsWallet()
 })
 const errorObj = ref({})
 const total = computed(() => {
-    return friendlyNumber(transferData.account === 0 ? walletInfo.value.total : contactTotal.value)
-
+    if (transferData.account === "spot") return friendlyNumber(walletInfo.value.total)
+    if (transferData.account === "options") return friendlyNumber(optionsWallet.value.balance)
+    return friendlyNumber(contactTotal.value)
 })
-const accountList = computed(() => {
-    return [
-        { name: t("transform.select1"), id: 0 },
-        { name: t("transform.select3"), id: 2 },
-    ]
-})
+const accountList = computed(() => [
+    { name: t("transform.select1"), id: "spot" },
+    { name: t("transform.select3"), id: "derivative" },
+    { name: t("transform.select4"), id: "options" },
+])
+// 合约与期权互斥：只能现货<->合约、现货<->期权，不能合约<->期权
+const isOptions = (val, other) => {
+    if (val === "options" && other === "derivative") return false
+    if (val === "derivative" && other === "options") return false
+    return true
+}
 const transferList = [
     {
         id: "USDC",
@@ -52,10 +66,14 @@ const accountChange = () => {
     transferData.amount = ""
 }
 const accountList1 = computed(() => {
-    return accountList.value.filter((item) => item.id !== transferData.account1)
+    return accountList.value.filter(
+        (item) => item.id !== transferData.account1 && isOptions(item.id, transferData.account1)
+    )
 })
 const accountList2 = computed(() => {
-    return accountList.value.filter((item) => item.id !== transferData.account)
+    return accountList.value.filter(
+        (item) => item.id !== transferData.account && isOptions(item.id, transferData.account)
+    )
 })
 const change = () => {
     transferData.amount = ""
@@ -65,18 +83,27 @@ const change = () => {
 }
 const emit = defineEmits(["success"])
 const sureHandle = () => {
-    let to = "spot"
-    if (transferData.account === 0) {
-        to = "derivative"
+    if (transferData.account === transferData.account1) {
+        errorObj.value = { account: t("transform.errorAccount"), account1: t("transform.errorAccount") }
+        return
     }
-    return transferApi({ amount: transferData.amount, to: to }).then(() => {
-        successMessage(t("common.opeSuccess"))
-        getWalletData(1)
-        getTransferBalance(2)
-        emit("success")
-    }).catch(err => {
-        errorObj.value = err
+    return transferApi({
+        amount: transferData.amount,
+        from: transferData.account,
+        to: transferData.account1,
     })
+        .then(() => {
+            successMessage(t("common.opeSuccess"))
+            transferData.amount = ""
+            getWalletData(1)
+            getWalletData(2)
+            getTransferBalance()
+            getOptionsWallet()
+            emit("success")
+        })
+        .catch((err) => {
+            errorObj.value = err
+        })
 }
 </script>
 <template>

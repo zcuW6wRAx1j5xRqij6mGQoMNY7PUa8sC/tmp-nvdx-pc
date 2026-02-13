@@ -423,6 +423,21 @@ export default {
         label3: '凍結中',
         btn: '劃轉',
     },
+    walletAsset: {
+        label1: '帳戶總資產(USDC)',
+        label2: '今日盈虧(USDC)',
+        label3: '現貨總資產(USDC)',
+        label4: '合約總資產(USDC)',
+        label5: '合約凍結資產(USDC)',
+        label6: '期權總資產(USDC)',
+        label7: '期權凍結資產(USDC)',
+        spotWallet: {
+            wallet0: '幣種',
+            wallet1: '可用',
+            wallet2: '凍結',
+            wallet3: '估值($)',
+        },
+    },
     withdrawal: {
         title: '提幣',
         label1: '選擇貨幣',

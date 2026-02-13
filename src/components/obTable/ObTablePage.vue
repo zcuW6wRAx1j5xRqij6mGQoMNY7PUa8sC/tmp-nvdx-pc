@@ -223,6 +223,7 @@ const handleSizeChange = () => {
 watch(
     () => props.tableSearch,
     () => {
+        console.log("tableSearch", props.tableSearch)
         searchData()
     }
 )

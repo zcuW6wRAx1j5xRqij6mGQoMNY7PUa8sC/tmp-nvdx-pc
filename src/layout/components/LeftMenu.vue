@@ -42,6 +42,13 @@ const menuList = computed(() => {
 			icons: getIcon("menu3s"),
         },
         {
+            name: t("menu.menuOption"),
+            path: "/OptionTrading",
+            id: "optionTradingList",
+            icon: getIcon("menuOption"),
+            icons: getIcon("menuOptions"),
+        },
+        {
             name: t("menu.menu4"),
             path: "/MyAssets",
             id: "/MyAssets",

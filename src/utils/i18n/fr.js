@@ -320,6 +320,7 @@ export default {
         pending: 'En attente',
         success: 'Succès',
         failed: 'Annulé',
+        noOption: 'Aucune option disponible pour ce symbole',
     },
     contractOpe: {
         tab: {
@@ -448,6 +449,8 @@ export default {
         label3: 'Actifs totaux au comptant (USDC)',
         label4: 'Actifs totaux des contrats (USDC)',
         label5: 'Actifs bloqués des contrats (USDC)',
+        label6: 'Actifs totaux options (USDC)',
+        label7: 'Actifs options bloqués (USDC)',
         spotWallet: {
             wallet0: 'Devise',
             wallet1: 'Disponible',
@@ -519,6 +522,7 @@ export default {
         select1: 'Compte spot',
         select2: 'Compte livraison',
         select3: 'Compte de contrat',
+        select4: 'Compte options',
         tip1: 'Solde disponible',
         errorAccount: 'Les comptes de transfert ne peuvent pas être les mêmes',
     },

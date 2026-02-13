@@ -60,6 +60,14 @@ const fnRouter = {
             },
         },
         {
+            path: '/OptionTrading',
+            component: () => import('@/views/option/Index.vue'),
+            meta: {
+                title: '期权交易',
+                id: '/OptionTradingList',
+            },
+        },
+        {
             path: '/MyAssets',
             component: () => import('@/views/myAssets/Index.vue'),
             meta: {

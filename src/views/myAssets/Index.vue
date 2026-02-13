@@ -20,18 +20,19 @@ const { walletInfo, contractWallet,getWalletData } =
     useBalance([1, 2])
 import {
     getWalletApi,
+    getOptionsWalletApi,
 } from "@/api/my"
 const { t } = useI18n()
 const wallet = ref({})
+const optionsWallet = ref({})
 const loading = ref(false)
 
 const getTotal = () => {
     loading.value = true
-    // 钱包信息
-    getWalletApi()
-        .then((data) => {
-            wallet.value = data || {}
-        })
+    Promise.all([
+        getWalletApi().then((data) => { wallet.value = data || {} }),
+        getOptionsWalletApi().then((data) => { optionsWallet.value = data || {} }),
+    ])
         .finally(() => {
             loading.value = false
         })
@@ -143,6 +144,24 @@ function getImageUrl (imageName) {
                     {{ t("walletAsset.label5") }}
                 </div>
             </div>
+            <div class="data-box">
+                <div class="data-value">
+                    {{ friendlyNumber(optionsWallet.balance) }}
+                </div>
+                <div class="data-title">
+                    <img src="@/assets/img/spot-green.svg" alt="" class="data-icon"/>
+                    {{ t("walletAsset.label6") }}
+                </div>
+            </div>
+            <div class="data-box">
+                <div class="data-value">
+                    {{ friendlyNumber(optionsWallet.lock_balance) }}
+                </div>
+                <div class="data-title">
+                    <img src="@/assets/img/spot-orange.svg" alt="" class="data-icon"/>
+                    {{ t("walletAsset.label7") }}
+                </div>
+            </div>
         </div>
         <div class="assets-content">
             <div class="menu-ul">
@@ -213,14 +232,13 @@ function getImageUrl (imageName) {
 }
 
 .data-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 12px;
 }
 
 .data-box {
   padding: 24px 0;
-  margin-right: 10%;
-  margin-left: 20px;
 
   .data-value {
     font-family: DIN;

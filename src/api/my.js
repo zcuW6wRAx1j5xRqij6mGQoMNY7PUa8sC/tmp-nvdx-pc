@@ -23,6 +23,11 @@ export const getContractWalletApi = () => {
   return http.request("get", "/api/app/wallet/futures");
 };
 
+// 期权钱包
+export const getOptionsWalletApi = () => {
+  return http.request("get", "/api/app/wallet/options");
+};
+
 // 合约钱包流水
 export const getContractWalletLogApi = (params) => {
   return http.request("get", "/api/app/wallet/futures/flow", { params });

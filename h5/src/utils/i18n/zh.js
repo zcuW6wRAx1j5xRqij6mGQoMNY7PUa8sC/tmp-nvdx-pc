@@ -334,6 +334,21 @@ export default {
         label3: '冻结中',
         btn: '划转',
     },
+    walletAsset: {
+        label1: '账户总资产(USDC)',
+        label2: '今日盈亏(USDC)',
+        label3: '现货总资产(USDC)',
+        label4: '合约总资产(USDC)',
+        label5: '合约冻结资产(USDC)',
+        label6: '期权总资产(USDC)',
+        label7: '期权冻结资产(USDC)',
+        spotWallet: {
+            wallet0: '币种',
+            wallet1: '可用',
+            wallet2: '冻结',
+            wallet3: '估值($)',
+        },
+    },
     withdrawal: {
         title: '提币',
         label1: '选择货币',

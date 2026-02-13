@@ -330,6 +330,21 @@ export default {
         label3: 'Bloccato',
         btn: 'Trasferisci',
     },
+    walletAsset: {
+        label1: 'Totale asset conto (USDC)',
+        label2: 'Guadagni/perdite di oggi (USDC)',
+        label3: 'Totale asset spot (USDC)',
+        label4: 'Totale asset contratti (USDC)',
+        label5: 'Asset contratti bloccati (USDC)',
+        label6: 'Totale asset opzioni (USDC)',
+        label7: 'Asset opzioni bloccati (USDC)',
+        spotWallet: {
+            wallet0: 'Moneta',
+            wallet1: 'Disponibile',
+            wallet2: 'Bloccato',
+            wallet3: 'Valutazione ($)',
+        },
+    },
     withdrawal: {
         title: 'Prelievo',
         label1: 'Seleziona valuta',

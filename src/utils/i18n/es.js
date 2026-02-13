@@ -323,6 +323,7 @@ export default {
         pending: 'Orden pendiente',
         success: 'Éxito',
         failed: 'Cancelado',
+        noOption: 'No hay opciones disponibles para este símbolo',
     },
     contractOpe: {
         tab: {
@@ -451,6 +452,8 @@ export default {
         label3: 'Total de activos Spot (USDC)',
         label4: 'Total de activos de contratos (USDC)',
         label5: 'Activos de contratos congelados (USDC)',
+        label6: 'Total activos opciones (USDC)',
+        label7: 'Activos opciones congelados (USDC)',
         spotWallet: {
             wallet0: 'Moneda',
             wallet1: 'Disponible',
@@ -522,6 +525,7 @@ export default {
         select1: 'Cuenta Spot',
         select2: 'Cuenta de entrega',
         select3: 'Cuenta de contratos',
+        select4: 'Cuenta de opciones',
         tip1: 'Saldo disponible',
         errorAccount: 'Las cuentas de origen y destino no pueden ser iguales',
     },
