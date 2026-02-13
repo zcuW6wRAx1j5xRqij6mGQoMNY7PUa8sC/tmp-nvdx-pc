@@ -524,7 +524,7 @@ const afterClosePrice = computed(() => {
                             }}
                         </template>
                     </el-table-column>
-                    <el-table-column :label="`${t('contractOpe.colum.field10')}`" width="100" fixed="right">
+                    <el-table-column :label="`${t('contractOpe.colum.field10')}`" width="100" align="center" fixed="right">
                         <template #default="{ row }">
                             <div class="ope-btn-blue" @click="showProfit(row)">
                                 {{ $t('contractOpe.colum2.btn1') }}
