@@ -225,7 +225,7 @@ const hisShowInfo = computed(() => {
                     </div>
                 </div>
                 <MyButton size="medium" class="mt-4" @click="liClick(item)">{{ activeTab === 1 ? t('otc.tab1') :
-                    t('otc.tab2') }}USDC</MyButton>
+                    t('otc.tab2') }}USD</MyButton>
             </div>
         </div>
         <div class="ai-ul" v-else>
@@ -262,7 +262,7 @@ const hisShowInfo = computed(() => {
                     <div class="flex items-center">
                         <div class="form-label">{{ activeTab === 1 ? `${t('otc.form.label1')} (${opeItem.min_limit} - ${opeItem.max_limit})` : `${t('otc.form.label4')} (${opeItem.sell_min_limit} - ${opeItem.sell_max_limit})` }}
                         </div>
-                        <div class="form-label ml-auto">USDC{{ t('otc.tip2') }}<span class="text-[#fff] c-is-num ml-1">{{ balance }}</span></div>
+                        <div class="form-label ml-auto">USD{{ t('otc.tip2') }}<span class="text-[#fff] c-is-num ml-1">{{ balance }}</span></div>
                     </div>
                     <MyInput isSmall :errorObj="errorObj" propName="quantity" v-model="form.quantity"
                         :placeholder="`${activeTab === 1 ? opeItem.min_limit : opeItem.sell_min_limit} - ${activeTab === 1 ? opeItem.max_limit : opeItem.sell_max_limit}`" />
@@ -271,7 +271,7 @@ const hisShowInfo = computed(() => {
                             activeTab === 1 ? opeItem.buy_price : opeItem.sell_price }}</span></div>
                         <div class="form-label ml-auto">{{ activeTab === 1 ? t('otc.form.label3') :
                             t('otc.form.label6')
-                            }}(USDC):<span class="green-color">{{ payPrice }}</span></div>
+                            }}(USD):<span class="green-color">{{ payPrice }}</span></div>
                     </div>
                     <div class="form-label">{{ t('otc.form.label7') }}</div>
                     <MyInput isSmall :errorObj="errorObj" propName="payment_method"
@@ -289,11 +289,11 @@ const hisShowInfo = computed(() => {
                             <div class="">
                                 <div class="form-label">{{ t('otcHis.label1') }}</div>
                                 <div>{{ activeTab == 1 ? t('otc.tab1') : t('otc.tab2') }}
-                                    USDC</div>
+                                    USD</div>
                             </div>
                             <div class="">
                                 <div class="form-label text-right">{{ t('otcHis.label2')
-                                    }}(USDC)</div>
+                                    }}(USD)</div>
                                 <div class="form-value green-color text-right">{{ payPrice }} </div>
                             </div>
                         </div>
@@ -306,7 +306,7 @@ const hisShowInfo = computed(() => {
                             <div class="text-center flex-auto">
                                 <div class="form-label">{{ t('otcHis.label4') }}
                                 </div>
-                                <div class="form-value">{{ form.quantity }} USDC</div>
+                                <div class="form-value">{{ form.quantity }} USD</div>
                             </div>
 
                             <div class="text-right flex-auto">

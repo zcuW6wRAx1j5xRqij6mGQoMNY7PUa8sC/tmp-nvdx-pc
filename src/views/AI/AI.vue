@@ -88,7 +88,7 @@
                         propName="amount" hasSuffix>
                         <template #suffix>
                             <div class="flex items-center font-15">
-                                <span class="text-[#fff] mr-4">USDC</span>
+                                <span class="text-[#fff] mr-4">USD</span>
                                 <span class="text-[#0F7DFF] cursor-pointer" @click="amount = +balance">
                                     {{ $t('aiBuy.btn2') }}
                                 </span>
@@ -99,7 +99,7 @@
                     <div class="flex justify-between items-center ">
                         <span class="text-sm text-[#8B939A]">{{ $t('aiBuy.tip2') }} :</span>
                         <span class="text-[#fff] ml-2 c-is-num">{{
-                            friendlyNumber(balance) }} USDC</span>
+                            friendlyNumber(balance) }} USD</span>
 
                     </div>
                 </div>
@@ -234,14 +234,14 @@ const infoList = computed(() => {
             key: 'amount',
             name: t('aiBuy.label2'),
             cb: () => {
-                return `${amount.value} USDC`
+                return `${amount.value} USD`
             },
         },
         {
             key: 'income',
             name: t('aiBuy.label3'),
             cb: data => {
-                return `${income.value} USDC`
+                return `${income.value} USD`
             },
         },
         {
@@ -256,7 +256,7 @@ const infoList = computed(() => {
             key: 'penaltyFee',
             name: t('aiBuy.label5'),
             cb: data => {
-                return `${penaltyFee.value} USDC`
+                return `${penaltyFee.value} USD`
             },
         },
     ]
@@ -282,7 +282,7 @@ const showInfoList = computed(() => {
             key: 'amount',
             name: t('aiHis.label1'),
             cb: data => {
-                return `${friendlyNumber(data.amount)} USDC`
+                return `${friendlyNumber(data.amount)} USD`
             },
         },
         {

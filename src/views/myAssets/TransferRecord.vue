@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { withdrawalLogApi, rechargeHistoryApi, getTransferRecordApi } from '@/api/my'
 import { ref, computed } from 'vue'
-import { setBaseUrl, friendlyNumber } from '@/utils/utils'
+import { setBaseUrl, friendlyNumber, usdcToUsd } from '@/utils/utils'
 import dayjs from 'dayjs'
 const { t } = useI18n()
 const props = defineProps({
@@ -55,7 +55,7 @@ const getTransferDirectionText = (flowType) => {
                                 class="b-img"
                                 alt=""
                             />
-                            {{ row.coin_name }}
+                            {{ usdcToUsd(row.coin_name) }}
                         </div>
                     </template>
                 </el-table-column>
@@ -117,7 +117,7 @@ const getTransferDirectionText = (flowType) => {
                                 class="b-img"
                                 alt=""
                             />
-                            {{ row.coin_name }}
+                            {{ usdcToUsd(row.coin_name) }}
                         </div>
                     </template>
                 </el-table-column>
@@ -177,7 +177,7 @@ const getTransferDirectionText = (flowType) => {
                 </el-table-column>
                 <el-table-column field="amount" :label="t('transferRecord.amount')" align="right" min-width="180">
                     <template #default="{ row }">
-                        {{ friendlyNumber(row.amount) }} USDC
+                        {{ friendlyNumber(row.amount) }} USD
                     </template>
                 </el-table-column>
                 <el-table-column field="created_at" :label="t('transferRecord.time')" min-width="180">

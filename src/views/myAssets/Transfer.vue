@@ -59,7 +59,7 @@ const isOptions = (val, other) => {
 const transferList = [
     {
         id: "USDC",
-        name: "USDC",
+        name: "USD",
     },
 ]
 const accountChange = () => {
@@ -131,7 +131,7 @@ const sureHandle = () => {
             </template>
         </MyInput>
         <div class="from-label flex justify-between">
-            <span class="text-[#9098A2]">{{ $t("withdrawal.tip.tip1") }}</span>{{ friendlyNumber(total) }}USDC
+            <span class="text-[#9098A2]">{{ $t("withdrawal.tip.tip1") }}</span>{{ friendlyNumber(total) }}USD
         </div>
         <MyButton :clickFn="sureHandle" :disabled="isTransferDisabled" size="large" class="justify-self-end submit-btn">
             {{

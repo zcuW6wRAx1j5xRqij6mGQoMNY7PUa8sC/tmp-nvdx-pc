@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { getContractOrderApi, getSpotOrderApi } from '@/api/data'
 import { useI18n } from 'vue-i18n'
-import { friendlyNumber, multiply, subtract, setBaseUrl , formatNumber} from '@/utils/utils'
+import { friendlyNumber, multiply, subtract, setBaseUrl , formatNumber, usdcToUsd } from '@/utils/utils'
 import dayjs from 'dayjs'
 import useSocket from '@/hooks/useSocket'
 const recordMap = ref({})
@@ -65,7 +65,7 @@ const tableRefresh = ref(false)
                     <template #default="{ row }">
                         <div class="flex">
                             <img :src="setBaseUrl(row.logo)" class="b-img" alt="" />
-                            {{ row.name }}
+                            {{ usdcToUsd(row.name) }}
                         </div>
                     </template>
                 </el-table-column>
@@ -104,7 +104,7 @@ const tableRefresh = ref(false)
                     </template>
                 </el-table-column>
                 <el-table-column
-                    :label="`${t('spotOpe.history.field6')}(USDC)`"
+                    :label="`${t('spotOpe.history.field6')}(USD)`"
                     align="right"
                     min-width="120"
                 >
@@ -166,7 +166,7 @@ const tableRefresh = ref(false)
                     <template #default="{ row }">
                         <div class="flex">
                             <img :src="setBaseUrl(row.logo)" class="b-img" alt="" />
-                            {{ row.name }}
+                            {{ usdcToUsd(row.name) }}
                         </div>
                     </template>
                 </el-table-column>
@@ -215,7 +215,7 @@ const tableRefresh = ref(false)
                         {{ friendlyNumber(row.open_price) }}
                     </template>
                 </el-table-column>
-                <el-table-column :label="`${t('contractOpe.history.field8')}(USDC)`" align="right">
+                <el-table-column :label="`${t('contractOpe.history.field8')}(USD)`" align="right">
                     <template #default="{ row }">
                         <div
                             :class="[

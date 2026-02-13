@@ -91,7 +91,7 @@ const sureHandle = (type) => {
     return addSpotOrderApi({
         spot_id: props.symbolInfo.id,
         side: isBuy ? "buy" : "sell", // 买卖方向
-        quantity: isBuy ? fromData.value.money : fromData.value.sell_amount, // 买：金额 USDC 卖：数量
+        quantity: isBuy ? fromData.value.money : fromData.value.sell_amount, // 买：金额 USD 卖：数量
         trade_type: fromData.value.document_type, // 交易类型
         price: isBuy ? fromData.value.price : fromData.value.sell_price, // 价格
     })
@@ -268,13 +268,13 @@ const typeChange = (val) => {
         </MyInput>
         <MyInput isLarge v-model="fromData.money" :placeholder="t('assets.table.field4')" :errorObj="errorObj"
              min="0" propName="money" @input="changeMoney" hasSuffix>
-            <template #suffix>{{ quoteAsset }}</template>
+            <template #suffix>USD</template>
 
         </MyInput>
 
         <div class="title">
             {{ t("tradingCommon.text2") }}
-            <span class="balance">{{ friendlyNumber(quoteBalance) }} {{ quoteAsset }}</span>
+            <span class="balance">{{ friendlyNumber(quoteBalance) }} USD</span>
         </div>
         <el-slider v-model="slider" step="25"  :marks="marks" @input="changeSlide" size="small" height="22" class="green-slider" />
         <MyButton :clickFn="() => sureHandle('buy')" size="large" type="green" class="mt-4 mb-6"
@@ -288,7 +288,7 @@ const typeChange = (val) => {
         </MyInput>
         <MyInput isLarge v-model="fromData.sell_money" :placeholder="t('assets.table.field4')" :errorObj="errorObj"
              min="0" propName="sell_money" @input="changeSellMoney" hasSuffix>
-            <template #suffix>{{ quoteAsset }}</template>
+            <template #suffix>USD</template>
 
         </MyInput>
         <div class="title">

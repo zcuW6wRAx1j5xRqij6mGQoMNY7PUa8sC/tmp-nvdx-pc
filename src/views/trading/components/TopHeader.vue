@@ -1,7 +1,7 @@
 <script setup>
 import { ref, defineProps, onMounted, watch } from "vue"
 import { useI18n } from "vue-i18n"
-import { friendlyNumber, setBaseUrl } from "@/utils/utils"
+import { friendlyNumber, setBaseUrl, usdcToUsd } from "@/utils/utils"
 import { getSpotListApi, getContractListApi } from "@/api/data"
 import { ArrowDownBold, ArrowLeftBold } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router"
@@ -99,7 +99,7 @@ const handleBack = () => {
                 <template #reference>
                     <div class="cur-currency">
                         <img :src="setBaseUrl(symbolInfo.logo)" v-if="symbolInfo.logo" class="b-img-large" />
-                        {{ symbolInfo.name }}
+                        {{ usdcToUsd(symbolInfo.name) }}
                         <el-icon class="el-icon--right" size="12">
                             <ArrowDownBold />
                         </el-icon>
@@ -121,7 +121,7 @@ const handleBack = () => {
                         <div class="body-row" v-for="(item, i) in tableList" :key="i" @click="toggleCurrency(item)">
                             <div class="flex flex-auto">
                                 <img :src="setBaseUrl(item.logo)" class="b-img" alt="" />
-                                {{ item.name }}
+                                {{ usdcToUsd(item.name) }}
                             </div>
                             <div style="width: 140px; text-align: right" :class="[
                                 getData(item, 'price_latest_change') >= 0

@@ -66,7 +66,7 @@ const showInfoList = computed(() => {
         },
         {
             key: "quota",
-            name: `${t("defn.label4")}(USDC)`,
+            name: `${t("defn.label4")}(USD)`,
             cb: (data) => {
                 return friendlyNumber(data.quota)
             },
@@ -192,7 +192,7 @@ const addHandle = () => {
         <MyInput
             isBlock
             v-model="fromData.usdc_amount"
-            title="USDC"
+            title="USD"
             :errorObj="errorObj"
             propName="usdc_amount"
             disabled

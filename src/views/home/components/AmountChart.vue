@@ -1,7 +1,7 @@
 <template>
   <div class="amount-chart-container">
     <div class="chart-title">
-        <span class="mr-auto">{{ checkInfo.name }}</span>
+        <span class="mr-auto">{{ usdcToUsd(checkInfo.name) }}</span>
         <MyTab :tabList="tabList"  :tabActive="tabActive" @tabChange="tabChange" />
     </div>
     <div ref="chartRef" class="chart" id="chartxxxx"></div>
@@ -12,6 +12,7 @@
 import { ref, onMounted, watch } from 'vue'
 import { recommendListApi } from '@/api/data'
 import { serChartData } from '@/utils/serChartData'
+import { usdcToUsd } from '@/utils/utils'
 const checkInfo = ref({})
 const getRecommendList =  () => {
     recommendListApi({ page: 1, page_size: 20 }).then(data => {

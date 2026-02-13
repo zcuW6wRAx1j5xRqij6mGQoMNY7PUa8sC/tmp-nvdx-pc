@@ -3,7 +3,7 @@ import { ref, defineProps, watch, computed } from "vue"
 import { useI18n } from "vue-i18n"
 import { getSpotOrderApi, cancelSpotOrderApi } from "@/api/data"
 import { successMessage } from "/@/utils/message"
-import { friendlyNumber, setBaseUrl } from "@/utils/utils"
+import { friendlyNumber, setBaseUrl, usdcToUsd } from "@/utils/utils"
 import { useBalance } from "@/hooks/useBalance"
 import dayjs from "dayjs"
 const { walletInfo, getWalletData } = useBalance()
@@ -164,7 +164,7 @@ const changeCheck = (val) => {
                                     class="b-img"
                                     alt=""
                                 />
-                                {{ row.name }}
+                                {{ usdcToUsd(row.name) }}
                             </div>
                         </template>
                     </el-table-column>
@@ -258,7 +258,7 @@ const changeCheck = (val) => {
                                     class="b-img"
                                     alt=""
                                 />
-                                {{ row.coin_name }}
+                                {{ usdcToUsd(row.coin_name) }}
                             </div>
                         </template>
                     </el-table-column>
@@ -297,7 +297,7 @@ const changeCheck = (val) => {
                                     class="b-img"
                                     alt=""
                                 />
-                                {{ row.name }}
+                                {{ usdcToUsd(row.name) }}
                             </div>
                         </template>
                     </el-table-column>

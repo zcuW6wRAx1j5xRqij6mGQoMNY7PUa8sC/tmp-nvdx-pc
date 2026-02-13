@@ -219,6 +219,7 @@ const submitForm = () => {
   overflow: auto;
   flex: auto;
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
 
   .from-box {

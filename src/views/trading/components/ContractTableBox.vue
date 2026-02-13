@@ -9,7 +9,7 @@ import {
     updateStopProfitApi,
 } from '@/api/data'
 import { successMessage } from '/@/utils/message'
-import { friendlyNumber, multiply, divide, subtract, add, setBaseUrl, formatNumber, percentage } from '@/utils/utils'
+import { friendlyNumber, multiply, divide, subtract, add, setBaseUrl, formatNumber, percentage, usdcToUsd } from '@/utils/utils'
 import dayjs from 'dayjs'
 import { useBalance } from '@/hooks/useBalance'
 const { getContractBalance, getWalletData } = useBalance([2])
@@ -338,7 +338,7 @@ const afterClosePrice = computed(() => {
                         <template #default="{ row }">
                             <div class="flex">
                                 <img :src="setBaseUrl(row.logo)" class="b-img" alt="" />
-                                {{ row.name }}
+                                {{ usdcToUsd(row.name) }}
                             </div>
                         </template>
                     </el-table-column>
@@ -397,7 +397,7 @@ const afterClosePrice = computed(() => {
                             {{ friendlyNumber(row.trade_volume) }}
                         </template>
                     </el-table-column>
-                    <el-table-column :label="`${t('contractOpe.colum.field10')}`" width="100">
+                    <el-table-column :label="`${t('contractOpe.colum.field10')}`" align="center" width="100">
                         <template #default="{ row }">
                             <div class="ope-btn" @click="cancelHandle(row, 1)">
                                 {{ $t('spotOpe.cancel') }}
@@ -416,7 +416,7 @@ const afterClosePrice = computed(() => {
                         <template #default="{ row }">
                             <div class="flex">
                                 <img :src="setBaseUrl(row.logo)" class="b-img" alt="" />
-                                {{ row.name }}
+                                {{ usdcToUsd(row.name) }}
                             </div>
                         </template>
                     </el-table-column>
@@ -546,7 +546,7 @@ const afterClosePrice = computed(() => {
                         <template #default="{ row }">
                             <div class="flex">
                                 <img :src="setBaseUrl(row.logo)" class="b-img" alt="" />
-                                {{ row.name }}
+                                {{ usdcToUsd(row.name) }}
                             </div>
                         </template>
                     </el-table-column>
@@ -689,7 +689,7 @@ const afterClosePrice = computed(() => {
                 <MyInput v-model="bondValue" :errorObj="errorObj" propName="sl" isSmall  hasSuffix>
                     <template #suffix>
                         <div class="flex items-center">
-                            USDC
+                            USD
                             <span class="all-btn" @click="bondValue = +getContractBalance">{{
                                 $t('contractOpe.bond.all')
                                 }}</span>
@@ -698,11 +698,11 @@ const afterClosePrice = computed(() => {
                 </MyInput>
                 <div class="flex items-center justify-between">
                     <div class="bond-label">{{ $t('contractOpe.bond.label1') }}</div>
-                    <div class="bond-value">{{ getContractBalance }}USDC</div>
+                    <div class="bond-value">{{ getContractBalance }}USD</div>
                 </div>
                 <div class="flex justify-between">
                     <div class="bond-box">
-                        <div class="bond-label">{{ showItem.name }}</div>
+                        <div class="bond-label">{{ usdcToUsd(showItem.name) }}</div>
                         <div class="bond-label">{{ $t('contractOpe.bond.info.label3') }}</div>
                         <div class="bond-label">{{ $t('contractOpe.bond.info.label4') }}</div>
                     </div>

@@ -2,7 +2,7 @@
 import { recommendListApi } from '@/api/data'
 import { ref, onMounted } from 'vue'
 import { serChartData } from '@/utils/serChartData'
-import { setBaseUrl } from '@/utils/utils'
+import { setBaseUrl, usdcToUsd } from '@/utils/utils'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const cardList = ref([])
@@ -35,7 +35,7 @@ const handleClick = (item) => {
                                 class="b-img"
                                 alt=""
                             />
-                            {{ item.name }}
+                            {{ usdcToUsd(item.name) }}
             </div>
             <div class="flex-auto flex justify-center chart" :id="`chart${item.id}`"></div>
         </div>

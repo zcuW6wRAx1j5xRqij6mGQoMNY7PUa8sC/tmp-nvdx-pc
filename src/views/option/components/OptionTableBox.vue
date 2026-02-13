@@ -2,7 +2,7 @@
 import { ref, watch, reactive, nextTick, computed } from "vue"
 import { useI18n } from "vue-i18n"
 import { optionsOrderListApi } from "@/api/options"
-import { friendlyNumber } from "@/utils/utils"
+import { friendlyNumber, usdcToUsd } from "@/utils/utils"
 import dayjs from "dayjs"
 
 const { t } = useI18n()
@@ -67,39 +67,39 @@ watch(
         <el-table :data="tableData" height="auto">
           <el-table-column :label="t('spotOpe.colum4.field1')" min-width="120">
             <template #default="{ row }">
-              {{ row.symbol?.name || "-" }}
+              {{ usdcToUsd(row.symbol?.name) || "-" }}
             </template>
           </el-table-column>
-          <el-table-column :label="t('spotOpe.colum4.field3')" width="80">
+          <el-table-column :label="t('spotOpe.colum4.field3')" min-width="80">
             <template #default="{ row }">
               <span :class="row.side === 'buy' ? 'green-color' : 'red-color'">
                 {{ row.side === "buy" ? t("spotOrder.type.type1") : t("spotOrder.type.type2") }}
               </span>
             </template>
           </el-table-column>
-          <el-table-column :label="t('spotOrder.buyAmount')" width="120" align="right">
+          <el-table-column :label="t('spotOrder.buyAmount')" min-width="120" align="right">
             <template #default="{ row }">
               {{ friendlyNumber(+row.amount || 0) }}
             </template>
           </el-table-column>
-          <el-table-column :label="t('spotOrder.openPrice')" width="120" align="right">
+          <el-table-column :label="t('spotOrder.openPrice')" min-width="120" align="right">
             <template #default="{ row }">
               {{ friendlyNumber(+row.open_price || 0) }}
             </template>
           </el-table-column>
-          <el-table-column :label="t('spotOrder.deliveryTime')" width="180">
+          <el-table-column :label="t('spotOrder.deliveryTime')" min-width="180">
             <template #default="{ row }">
               {{ row.settlement_time ? dayjs(row.settlement_time).format("DD.MM.YYYY HH:mm:ss") : "-" }}
             </template>
           </el-table-column>
-          <el-table-column :label="t('spotOrder.profitAmount')" width="120" align="right">
+          <el-table-column :label="t('spotOrder.profitAmount')" min-width="120" align="right">
             <template #default="{ row }">
               <span :class="+row.profit >= 0 ? 'green-color' : 'red-color'">
                 {{ friendlyNumber(row.profit) }}
               </span>
             </template>
           </el-table-column>
-          <el-table-column :label="t('spotOrder.statusLabel')" width="100">
+          <el-table-column :label="t('spotOrder.statusLabel')" min-width="100">
             <template #default="{ row }">
               <span :class="row.status === 'pending' ? 'status-pending' : 'status-end'">
                 {{

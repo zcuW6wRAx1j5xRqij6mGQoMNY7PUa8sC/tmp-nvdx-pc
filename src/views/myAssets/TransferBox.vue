@@ -36,6 +36,7 @@ const emit = defineEmits(['success'])
 .transfer-box {
     max-width: 800px;
     margin: 0 auto;
+    width: 100%;
     overflow: auto;
     flex: auto;
 }

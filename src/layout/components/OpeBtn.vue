@@ -231,7 +231,7 @@ const accountList = computed(() => {
 const transferList = [
     {
         id: "USDC",
-        name: "USDC",
+        name: "USD",
     },
 ]
 const accountChange = () => {
@@ -385,7 +385,7 @@ const sureHandle = () => {
                 </template>
             </MyInput>
             <div class="from-label">
-                {{ $t("withdrawal.tip.tip1") }}：{{ total }}USDC
+                {{ $t("withdrawal.tip.tip1") }}：{{ total }}USD
             </div>
             <MyButton :clickFn="sureHandle" :disabled="isTransferDisabled" size="medium">{{ $t("transform.btn1") }}
             </MyButton>
@@ -421,6 +421,7 @@ const sureHandle = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
 
   .ope-icon {
     width: 24px;

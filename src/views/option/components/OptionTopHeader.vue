@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, onMounted, nextTick } from "vue"
 import { useI18n } from "vue-i18n"
-import { friendlyNumber, setBaseUrl } from "@/utils/utils"
+import { friendlyNumber, setBaseUrl, usdcToUsd } from "@/utils/utils"
 import { getContractListApi } from "@/api/data"
 import { optionsListApi } from "@/api/options"
 import { ArrowDownBold, ArrowLeftBold } from "@element-plus/icons-vue"
@@ -87,7 +87,7 @@ const handleBack = () => {
         <template #reference>
           <div class="cur-currency">
             <img v-if="symbolInfo.logo" :src="setBaseUrl(symbolInfo.logo)" class="b-img-large" />
-            {{ symbolInfo.name }}
+            {{ usdcToUsd(symbolInfo.name) }}
             <el-icon class="el-icon--right" size="12">
               <ArrowDownBold />
             </el-icon>
@@ -108,7 +108,7 @@ const handleBack = () => {
             >
               <div class="flex flex-auto">
                 <img :src="setBaseUrl(item.logo)" class="b-img" alt="" />
-                {{ item.name }}
+                {{ usdcToUsd(item.name) }}
               </div>
               <div
                 style="width: 140px; text-align: right"

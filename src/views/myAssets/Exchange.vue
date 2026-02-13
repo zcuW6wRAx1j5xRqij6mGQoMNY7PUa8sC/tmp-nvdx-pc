@@ -363,6 +363,7 @@ onUnmounted(() => {
 	
 .exchange-body {
   max-width: 800px;
+  width: 100%;
   flex-shrink: 0;
   margin: 0 auto;
   overflow: auto;

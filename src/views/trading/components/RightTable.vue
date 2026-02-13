@@ -56,7 +56,7 @@ const quoteAsset = computed(() => {
     <div class="price-ul">
         <div class="flex-auto">
             <div class="info-box info-box-top">
-                <span class="info-title">{{ $t('tradingCommon.table.colum6.field1') }}({{ quoteAsset }})</span>
+                <span class="info-title">{{ $t('tradingCommon.table.colum6.field1') }}(USD)</span>
                 <span class="info-title">{{ $t('tradingCommon.table.colum6.field2') }}({{ baseAsset }})</span>
             </div>
             <div class="info-box" v-for="(item, index) in buyList" :key="index">

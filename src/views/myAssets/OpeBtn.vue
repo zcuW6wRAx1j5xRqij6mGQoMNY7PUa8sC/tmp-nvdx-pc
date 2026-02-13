@@ -231,7 +231,7 @@ const accountList = computed(() => {
 const transferList = [
     {
         id: "USDC",
-        name: "USDC",
+        name: "USD",
     },
 ]
 const accountChange = () => {

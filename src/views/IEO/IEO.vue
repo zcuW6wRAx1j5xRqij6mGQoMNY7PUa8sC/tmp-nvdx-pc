@@ -257,9 +257,9 @@ const showInfoList = computed(() => {
                 cb: data => {
                     return (
                         friendlyNumber(data.subscribed_amount) +
-                        ' USDC / ' +
+                        ' USD / ' +
                         friendlyNumber(data.result_total_amount) +
-                        ' USDC'
+                        ' USD'
                     )
                 },
             },
@@ -269,7 +269,7 @@ const showInfoList = computed(() => {
                 cb: data => {
                     return (
                         friendlyNumber(subtract(data.result_total_amount, data.subscribed_amount)) +
-                        ' USDC'
+                        ' USD'
                     )
                 },
             },

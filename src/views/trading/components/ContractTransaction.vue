@@ -101,11 +101,11 @@ const suerShow = computed(() => {
     return [
         {
             name: t("contractOpe.orderSure.info.label1"),
-            value: `≈ ${fromData.value.price} USDC`,
+            value: `≈ ${fromData.value.price} USD`,
         },
         {
             name: t("contractOpe.orderSure.info.label2"),
-            value: `${t('unit.lots')}  ${fromData.value.amount} = ${friendlyNumber(multiply(removeDot(fromData.value.amount), 100))} USDC`,
+            value: `${t('unit.lots')}  ${fromData.value.amount} = ${friendlyNumber(multiply(removeDot(fromData.value.amount), 100))} USD`,
         },
         {
             name: t("contractOpe.orderSure.info.label3"),
@@ -288,16 +288,16 @@ const typeChange = (val) => {
             <template #suffix><span >{{ baseAsset }}</span></template>
         </MyInput>
         <div class="title">
-            1x = <span class="font-bold ml-1">100 USDC</span>
+            1x = <span class="font-bold ml-1">100 USD</span>
         </div>
        
         <div class="title">
             {{ $t("walletAsset.spotWallet.wallet1") }}
-            <span class="balance">{{ getContractBalance }} USDC</span>
+            <span class="balance">{{ getContractBalance }} USD</span>
         </div>
         <div class="title">
             {{ $t("contractOpe.label.label2") }}
-            <span class="balance">{{ bond }} {{ quoteAsset }}</span>
+            <span class="balance">{{ bond }} USD</span>
         </div>
         <MyButton size="large" :clickFn="() => sureHandle(typeActive)" class="mt-auto" :type="typeActive === 'buy' ? 'green' : 'danger'"
             :disabled="!fromData.leverage || !fromData.amount">{{ typeActive === 'buy' ? $t("contractOpe.btn.btn1") : $t("contractOpe.btn.btn2") }}

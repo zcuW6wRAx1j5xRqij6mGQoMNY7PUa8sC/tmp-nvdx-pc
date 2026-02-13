@@ -10,7 +10,7 @@ import {
     addCollectApi,
     getContractListApi,
 } from "@/api/data"
-import { friendlyNumber, setBaseUrl } from "@/utils/utils"
+import { friendlyNumber, setBaseUrl, usdcToUsd } from "@/utils/utils"
 import { onUnmounted, onMounted } from "vue"
 import { useDebounceFn } from '@vueuse/core'
 
@@ -163,7 +163,7 @@ onUnmounted(() => {
                 <template #cell-name="{ row }">
                     <div class="flex b-box">
                         <img :src="setBaseUrl(row.logo)" class="b-img" alt="" />
-                        {{ row.name }}
+                        {{ usdcToUsd(row.name) }}
                     </div>
                 </template>
                 
