@@ -22,7 +22,7 @@ if (!locale) {
 }
 const i18n = createI18n({
     locale: locale, // 设置默认语言
-    fallbackLocale: 'zh_CN', // 设置备用语言
+    fallbackLocale: 'en', // 设置备用语言
     legacy: false,
     messages,
 })

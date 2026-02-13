@@ -17,14 +17,14 @@
         <slot />
         <template #footer>
             <span class="dialog-footer" v-if="!selfFooter">
-                <el-button @click="handleCancel" :loading="loading">{{ cancelText }}</el-button>
+                <el-button @click="handleCancel" :loading="loading">{{ cancelText || t('spotOpe.cancel') }}</el-button>
                 <el-button
                     type="primary"
                     @click="handleConfirm"
                     :loading="loading"
                     :disabled="disabled"
                 >
-                    {{ confirmText }}
+                    {{ confirmText || t('common.text1') }}
                 </el-button>
             </span>
             <slot name="footer" />
@@ -33,10 +33,12 @@
 </template>
 <script setup >
 // https://vxetable.cn/#/modal/api 文档链接
+import { useI18n } from 'vue-i18n'
 import { propTypes } from '@utils/propTypes'
+const { t } = useI18n()
 const props = defineProps({
-    confirmText: propTypes.string.def('确定'),
-    cancelText: propTypes.string.def('取消'),
+    confirmText: propTypes.string.def(''),
+    cancelText: propTypes.string.def(''),
     selfFooter: propTypes.bool.def(false),
     width: {
         type: [String, Number],

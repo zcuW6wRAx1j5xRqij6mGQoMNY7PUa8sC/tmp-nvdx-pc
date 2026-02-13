@@ -6,7 +6,7 @@ const languageList = computed(() => {
     let list = []
     if (process.env.NODE_ENV === "development") {
         list.push({
-            text: "中文简体",
+            text: t("changeLang.label2"),
             value: "zh_CN",
         })
     }

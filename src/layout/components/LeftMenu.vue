@@ -56,7 +56,7 @@ const menuList = computed(() => {
 			icons: getIcon("menu4s")
         },
         {
-            name: 'IEO',
+            name: t('ieo.list'),
             path: "/IEO",
             id: "IEO",
             icon: getIcon("menu5"),
