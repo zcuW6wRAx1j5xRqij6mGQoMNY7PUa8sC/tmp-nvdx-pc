@@ -481,6 +481,8 @@ export default {
         title: 'Impostazioni',
         sbutitle: 'Impostazioni',
         theme: 'Cambia tema',
+        themeDark: 'Scuro',
+        themeLight: 'Chiaro',
     },
     walletAsset: {
         label1: 'Totale asset conto (USD)',

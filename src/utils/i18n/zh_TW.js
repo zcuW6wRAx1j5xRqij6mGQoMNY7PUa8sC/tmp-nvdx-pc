@@ -480,6 +480,8 @@ export default {
         title: '設置',
         sbutitle: '設置',
         theme: '切換主題',
+        themeDark: '深色',
+        themeLight: '淺色',
     },
     walletAsset: {
         label1: '帳戶總資產(USD)',

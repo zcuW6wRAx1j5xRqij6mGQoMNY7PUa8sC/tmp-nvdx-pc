@@ -482,6 +482,8 @@ export default {
         title: '设置',
         sbutitle: '设置',
         theme: '切换主题',
+        themeDark: '深色',
+        themeLight: '浅色',
     },
     walletAsset: {
         label1: '账户总资产(USD)',

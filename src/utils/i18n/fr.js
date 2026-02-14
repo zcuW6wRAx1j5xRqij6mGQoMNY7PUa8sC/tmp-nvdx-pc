@@ -480,6 +480,8 @@ export default {
         title: 'Paramètres',
         sbutitle: 'Paramètres',
         theme: 'Changer de thème',
+        themeDark: 'Sombre',
+        themeLight: 'Clair',
     },
     walletAsset: {
         label1: 'Actifs totaux du compte (USD)',

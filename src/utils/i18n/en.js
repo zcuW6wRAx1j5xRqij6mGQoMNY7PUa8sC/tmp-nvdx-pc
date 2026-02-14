@@ -484,6 +484,8 @@ export default {
     title: "Settings",
     sbutitle: "Settings",
     theme: "Switch themes",
+    themeDark: "Dark",
+    themeLight: "Light",
   },
   walletAsset: {
     label1: "Total Assets (USD)",

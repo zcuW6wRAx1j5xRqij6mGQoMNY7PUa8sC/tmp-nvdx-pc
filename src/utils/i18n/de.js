@@ -483,6 +483,8 @@ export default {
         title: 'Einstellungen',
         sbutitle: 'Einstellungen',
         theme: 'Design wechseln',
+        themeDark: 'Dunkel',
+        themeLight: 'Hell',
     },
     walletAsset: {
         label1: 'Gesamtvermögen (USD)',

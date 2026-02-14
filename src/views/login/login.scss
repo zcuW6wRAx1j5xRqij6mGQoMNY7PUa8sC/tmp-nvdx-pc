@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 12px;
   width: 100%;
   padding: 0 60px;
 }
@@ -26,6 +27,7 @@
   border-radius: 33px;
   background-color: var(--bg-card);
   height: 100%;
+  overflow: auto;
 }
 
 .login-page {

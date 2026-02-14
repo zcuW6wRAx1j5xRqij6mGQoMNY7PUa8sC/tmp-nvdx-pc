@@ -7,6 +7,7 @@ import { useUserStoreHook } from '@/store/modules/user'
 import useSocket from '@/hooks/useSocket'
 import { computed, nextTick, onMounted, reactive } from 'vue'
 import Language from '@/views/login/components/Language.vue'
+import ThemeSwitch from '@/views/login/components/ThemeSwitch.vue'
 const { unConnectHandle } = useSocket()
 onMounted(unConnectHandle)
 const { t } = useI18n()
@@ -109,6 +110,7 @@ const changePhoneCode = (value) => {
 <template>
     <div class="c-content login-page relative" >
         <div class="top-header">
+            <ThemeSwitch />
             <Language />
         </div>
         <div class="login-body" style="">
@@ -123,10 +125,10 @@ const changePhoneCode = (value) => {
                     @changePhoneCode="changePhoneCode" />
                 <MyInput isIn isLarge v-model="fromData.email" :placeholder="$t('login.input1')" :errorObj="errorObj"
                     propName="email" v-if="fromData.account_type === 'email'" />
-                <MyInput   isIn isLarge v-model="fromData.password" :placeholder="$t('login.input2')" :errorObj="errorObj"
+                <MyInput isIn isLarge hasSuffix v-model="fromData.password" :placeholder="$t('login.input2')" :errorObj="errorObj"
                     propName="password" type="password">
                     <template #suffix>
-                        <span class="tip-forget-pwd" @click="router.push('/forgetPwd')">{{
+                        <span class="tip-forget-pwd" @click="router.push('/ForgetPwd')">{{
                             $t('login.forgetPwd')
                             }}</span>
                     </template>
